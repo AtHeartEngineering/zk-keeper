@@ -29,6 +29,10 @@
             background-color: transparent;
             outline: none;
             cursor: pointer;
+
+            option {
+              background-color: $black;
+            }
         }
     }
 

@@ -3,8 +3,9 @@ import {
     MerkleProof,
     SemaphoreFullProof,
     SemaphoreSolidityProof,
-    SemaphorePublicSignals,
-    genSignalHash,
+    Proof,
+    // SemaphorePublicSignals,
+    // genSignalHash,
     generateMerkleProof
 } from '@zk-kit/protocols'
 import { ZkIdentity } from '@zk-kit/identity'
@@ -46,7 +47,7 @@ export default class SemaphoreService {
                 merkleProof = generateMerkleProof(
                     proofArtifacts.depth,
                     BigInt(0),
-                    proofArtifacts.leavesPerNode,
+                    // proofArtifacts.leavesPerNode,
                     leaves,
                     identityCommitment
                 )
@@ -62,7 +63,7 @@ export default class SemaphoreService {
 
             const fullProof: SemaphoreFullProof = await Semaphore.genProof(witness, circuitFilePath, zkeyFilePath)
 
-            const solidityProof: SemaphoreSolidityProof = Semaphore.packToSolidityProof(fullProof)
+            const solidityProof: SemaphoreSolidityProof = Semaphore.packToSolidityProof(fullProof.proof)
 
             return {
                 fullProof,

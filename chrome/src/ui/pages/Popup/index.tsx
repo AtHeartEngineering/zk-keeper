@@ -1,8 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable react/function-component-definition */
-import React, { ReactElement, ReactNode, useEffect, useState } from 'react'
+import React, { ReactElement, useEffect, useState } from 'react'
 import './popup.scss'
-import { Redirect, Route, Switch } from 'react-router'
+import { Routes, Route, Navigate } from 'react-router-dom'
 import Home from '@src/ui/pages/Home'
 import { useRequestsPending, fetchRequestPendingStatus } from '@src/ui/ducks/requests'
 import { useDispatch } from 'react-redux'
@@ -38,7 +38,7 @@ export default function Popup(): ReactElement {
         return <></>
     }
 
-    let content: ReactNode
+    let content: any
 
     if (!initialized) {
         content = <Onboarding />
@@ -49,14 +49,10 @@ export default function Popup(): ReactElement {
         return <ConfirmRequestModal />
     } else {
         content = (
-            <Switch>
-                <Route path="/">
-                    <Home />
-                </Route>
-                <Route>
-                    <Redirect to="/" />
-                </Route>
-            </Switch>
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="*" element={<Navigate to="/" replace />} />
+            </Routes>
         )
     }
 

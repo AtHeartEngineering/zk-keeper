@@ -1,4 +1,4 @@
-import React, { ReactElement, useCallback, useState } from 'react'
+import React, { ReactElement, useCallback, useEffect, useState } from 'react'
 import './login.scss'
 import Button, { ButtonType } from '@src/ui/components/Button'
 import Icon from '@src/ui/components/Icon'
@@ -21,18 +21,23 @@ const Login = function(): ReactElement {
         }
 
         setLoading(true)
-
-        try {
-            await postMessage({
-                method: RPCAction.UNLOCK,
-                payload: pw
-            })
-        } catch (e: any) {
+        postMessage({
+            method: RPCAction.UNLOCK,
+            payload: pw
+        })
+          .catch((e: any) => {
             setError(e.message)
-        } finally {
+          })
+          .finally(() => {
             setLoading(false)
-        }
+          })
     }, [pw])
+
+    useEffect(() => {
+      return () => {
+        setPW('');
+      }
+    }, [])
 
     return (
         <div className="flex flex-col flex-nowrap h-full login">
