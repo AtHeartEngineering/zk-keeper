@@ -1,0 +1,31 @@
+{
+  "name": "zk-keeper-core",
+  "version": "0.0.0",
+  "description": "todo",
+  "keywords": [
+    "zk",
+    "zero-knowledge",
+    "extension"
+  ],
+  "author": "AtHeartEngineer <1675654+AtHeartEngineer@users.noreply.github.com>",
+  "homepage": "https://github.com/AtHeartEngineering/zk-keeper#readme",
+  "license": "MIT",
+  "main": "src/zk-keeper-core.js",
+  "directories": {
+    "lib": "src",
+    "test": "tests"
+  },
+  "files": [
+    "src"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AtHeartEngineering/zk-keeper.git"
+  },
+  "scripts": {
+    "test": "node ./tests/zk-keeper-core.test.js"
+  },
+  "bugs": {
+    "url": "https://github.com/AtHeartEngineering/zk-keeper/issues"
+  }
+}
