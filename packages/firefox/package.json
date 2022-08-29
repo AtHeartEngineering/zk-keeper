@@ -21,6 +21,7 @@
     "url": "git+https://github.com/AtHeartEngineering/zk-keeper.git"
   },
   "scripts": {
+    "build": "tsc",
     "test": "node ./tests/firefox.test.js"
   },
   "bugs": {
